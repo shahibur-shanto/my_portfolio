@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -48,9 +49,18 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+         $menus = Menu::all();
+
+        return view('projects.show', [
+            'project' => $project,
+            'menus'=>$menus,
+            'relatedProjects' => Project::where('id', '!=', $project->id)
+                ->latest()
+                ->take(3)
+                ->get()
+        ]);
     }
 
     /**

@@ -5,9 +5,11 @@
 
         <!-- Desktop Menu -->
         <nav class="hidden md:flex space-x-6">
-{{--            <a href="#Home" class="hover:text-primary">Home</a>--}}
+
             @foreach($menus as $menu)
-                <a href="#{{strtolower($menu['name'])}}" class="hover:text-primary">{{$menu['name']}}</a>
+
+{{--                <a href="#{{strtolower($menu['name'])}}" class="hover:text-primary">{{$menu['name']}}</a>--}}
+                <a href="{{ url('/').'#' . strtolower($menu['name']) }}" class="go-home" data-section="home">{{$menu['name']}}</a>
             @endforeach
             @auth
                 @if(auth()->user()->name === 'admin')
@@ -61,4 +63,5 @@
             mobileMenu.classList.add('hidden');
         });
     });
+
 </script>

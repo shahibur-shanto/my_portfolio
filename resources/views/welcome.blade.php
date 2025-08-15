@@ -7,7 +7,7 @@
     <title>My Portfolio</title>
     @vite('resources/css/app.css')
 </head>
-<body id="home" class="bg-gray-50 text-gray-800">
+<body data-initial-section="{{ $initialSection }}" id="home" class="bg-gray-50 text-gray-800">
 
 <!-- Navbar -->
 <x-navbar :menus="$menus"/>
@@ -69,6 +69,13 @@
 <footer class="bg-blue-900 text-white text-center p-4">
     &copy; 2025 Shahibur Shanto. All rights reserved.
 </footer>
-
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const initialSection = document.body.dataset.initialSection;
+        if (initialSection) {
+            document.getElementById(initialSection)?.scrollIntoView();
+        }
+    });
+</script>
 </body>
 </html>

@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="mb-1">
-                    <a href="{{ route('welcome') }}"
+                    <a href="{{ route('home') }}"
                        class="block py-2 px-4 hover:bg-blue-700 {{ request()->routeIs('welcome') ? 'bg-blue-700' : '' }}">
                         Visit Web Site
                     </a>
