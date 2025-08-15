@@ -8,12 +8,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-//    public function home(){
-//        $menus = Menu::all();
-//        $projects = Project::all();
-////        dd($menus);
-//        return view('welcome',['menus'=>$menus, 'projects'=>$projects]);
-//    }
+
 
     public function index()
     {

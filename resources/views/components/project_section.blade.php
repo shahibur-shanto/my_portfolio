@@ -9,7 +9,7 @@
                 <div class="p-6">
                     <h4 class="text-xl font-bold mb-2">{{$project['title']}}</h4>
                     <p class="mb-4">{{$project['description']}}</p>
-                    <a href="#" class="text-primary hover:underline">View Details →</a>
+                    <a href="/projects/{{$project->id}}" class="text-primary hover:underline">View Details →</a>
                 </div>
             </div>
             @endforeach
