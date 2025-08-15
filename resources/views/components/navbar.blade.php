@@ -5,9 +5,17 @@
 
         <!-- Desktop Menu -->
         <nav class="hidden md:flex space-x-6">
+{{--            <a href="#Home" class="hover:text-primary">Home</a>--}}
             @foreach($menus as $menu)
                 <a href="#{{strtolower($menu['name'])}}" class="hover:text-primary">{{$menu['name']}}</a>
             @endforeach
+            @auth
+                @if(auth()->user()->name === 'admin')
+                    <a href="/admin/dashboard" class="hover:text-primary">
+                        Dashboard
+                    </a>
+                @endif
+            @endauth
         </nav>
 
         <!-- Mobile Menu Button -->
@@ -21,8 +29,18 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-gray-100 px-4 pb-4">
         @foreach($menus as $menu)
+
             <a href="#{{strtolower($menu['name'])}}" class="block py-2 hover:text-primary">{{$menu['name']}}</a>
+
         @endforeach
+
+            @auth
+                @if(auth()->user()->name === 'admin')
+                    <a href="/dashboard" class="block py-2 hover:text-primary text-red-500 font-medium">
+                        Dashboard (Admin)
+                    </a>
+                @endif
+            @endauth
     </div>
 </header>
 
