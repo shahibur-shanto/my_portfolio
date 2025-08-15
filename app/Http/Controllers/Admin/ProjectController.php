@@ -15,8 +15,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::latest()->paginate(10);
-        return view('admin.projects.index', compact('projects'));
+        $menus = Menu::all();
+        return view('projects.all-projects',['menus'=>$menus]);
+//        $projects = Project::latest()->paginate(10);
+//        return view('admin.projects.index', compact('projects'));
     }
 
     /**

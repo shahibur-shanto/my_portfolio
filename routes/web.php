@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 // Admin Routes
 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function() {
