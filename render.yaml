@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: my-portfolio
+    runtime: php
+    buildCommand: |
+      # Install PNPM first
+      corepack enable
+      corepack prepare pnpm@latest --activate
+
+      # PHP dependencies
+      composer install --optimize-autoloader --no-dev
+
+      # Frontend dependencies
+      pnpm install
+      pnpm run prod
+
+      # Laravel setup
+      php artisan key:generate --force
+      php artisan storage:link
+      php artisan migrate --force
+      php artisan config:cache
+      php artisan route:cache
+      php artisan view:cache
+    startCommand: php artisan serve --host=0.0.0.0 --port=10000
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /opt/render/project/src/database/database.sqlite
