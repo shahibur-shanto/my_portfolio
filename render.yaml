@@ -2,6 +2,7 @@ services:
   - type: web
     name: my-portfolio
     runtime: php
+    env: php
     buildCommand: |
       # Install PNPM first
       corepack enable
